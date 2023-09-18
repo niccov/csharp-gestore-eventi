@@ -42,20 +42,63 @@ namespace GestoreEventi
             }
         }
 
-        public Evento(string titolo, DateTime data, int capienzaMassima)
+        public int CapienzaMassima
         {
-            Titolo = titolo;
-            Data = data;
-            if (capienzaMassima <= 0)
+            get { return capienzaMassima; }
+            set
             {
-                throw new ArgumentException("La capienza massima deve essere un numero positivo.");
+                if (value <= 0)
+                    throw new ArgumentException("La capienza massima deve essere un numero positivo.");
+                capienzaMassima = value;
             }
-                
-            this.capienzaMassima = capienzaMassima;
-            this.postiPrenotati = 0;
         }
 
-        
+        public Evento()
+        {
+            // Costruttore vuoto
+        }
+
+        public void PrenotaPosti(int postiDaPrenotare)
+        {
+            if (data < DateTime.Now)
+            {
+                throw new InvalidOperationException("L'evento è già passato.");
+            }
+            if (postiDaPrenotare <= 0)
+            {
+                throw new ArgumentException("Il numero di posti da prenotare deve essere positivo.");
+            }
+            if (postiPrenotati + postiDaPrenotare > capienzaMassima)
+            {
+                throw new InvalidOperationException("Non ci sono abbastanza posti disponibili.");
+            }
+
+            postiPrenotati += postiDaPrenotare;
+        }
+
+        public void DisdiciPosti(int postiDaDisdire)
+        {
+            if (data < DateTime.Now)
+            {
+                throw new InvalidOperationException("L'evento è già passato.");
+            }
+            if (postiDaDisdire <= 0)
+            {
+                throw new ArgumentException("Il numero di posti da disdire deve essere positivo.");
+            }
+            if (postiDaDisdire > postiPrenotati)
+            {
+                throw new InvalidOperationException("Non ci sono abbastanza posti prenotati da disdire.");
+            }
+
+            postiPrenotati -= postiDaDisdire;
+        }
+
+        public override string ToString()
+        {
+            return data.ToString("dd/MM/yyyy") + " - " + titolo;
+        }
+
     }
 
 }
