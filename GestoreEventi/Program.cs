@@ -8,7 +8,7 @@
             Console.Write("Inserisci il titolo dell'evento: ");
             evento.Titolo = Console.ReadLine();
 
-            Console.Write("Inserisci la data dell'evento (formato dd/MM/yyyy): ");
+            Console.Write("Inserisci la data dell'evento (dd/MM/yyyy): ");
             evento.Data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
 
             Console.Write("Inserisci la capienza massima: ");
@@ -53,8 +53,10 @@
                 Console.WriteLine($"Posti disponibili dopo le disdette: {evento.CapienzaMassima - evento.postiPrenotati}");
             }
 
-            //Console.WriteLine("Sei uscito dal ciclo, ora continua a scegliere");
+            Console.WriteLine();
 
+            
+                
         }
     }
 }
