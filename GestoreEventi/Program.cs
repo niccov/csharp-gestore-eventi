@@ -23,8 +23,10 @@
             Console.WriteLine($"Numero di posti prenotati = {postiDaPrenotare}");
             Console.WriteLine($"Numero di posti disponibili = {evento.CapienzaMassima - postiDaPrenotare}");
 
+
             while (true)
             {
+                Console.WriteLine();
                 Console.Write("Vuoi disdire dei posti? (Sì/No): ");
                 string risposta = Console.ReadLine().Trim().ToLower();
 
@@ -38,6 +40,7 @@
                     int postiDaDisdire = int.Parse(Console.ReadLine());
 
                     evento.DisdiciPosti(postiDaDisdire);
+                    Console.WriteLine();
                     Console.WriteLine($"Disdetti {postiDaDisdire} posti.");
                 }
                 else
@@ -45,9 +48,12 @@
                     Console.WriteLine("Risposta non valida. Rispondi con 'Sì' o 'No'.");
                 }
 
+                Console.WriteLine();
                 Console.WriteLine($"Posti prenotati dopo le disdette: {evento.postiPrenotati}");
                 Console.WriteLine($"Posti disponibili dopo le disdette: {evento.CapienzaMassima - evento.postiPrenotati}");
             }
+
+            //Console.WriteLine("Sei uscito dal ciclo, ora continua a scegliere");
 
         }
     }
