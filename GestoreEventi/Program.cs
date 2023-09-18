@@ -69,9 +69,9 @@
             {
                 Console.Write($"Inserisci il nome del {i + 1} evento: ");
                 string titoloEvento = Console.ReadLine();
-                programma.AggiungiEvento(titoloEvento);
+                
 
-                Console.Write("Inserisci la dat dell'evento (dd/MM/yyyy): ");
+                Console.Write("Inserisci la data dell'evento (dd/MM/yyyy): ");
                 DateTime dataEvento = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
                
 
@@ -79,12 +79,14 @@
                 int capienzaMassima = int.Parse(Console.ReadLine());
 
                 Console.WriteLine();
+
+                
             }
 
             Console.WriteLine($"Il numero di eventi nel programma è: {numeroEventiDaAggiungere}");
             Console.WriteLine("Ecco il tuo programma eventi: ");
             Console.WriteLine(titoloProgramma);
-            //Console.WriteLine(ProgrammaEventi.StampaEventi(eventi));
+            Console.WriteLine(ProgrammaEventi.StampaEventi(ProgrammaEventi.eventi));
 
         }
     }

@@ -9,23 +9,23 @@ namespace GestoreEventi
     public class ProgrammaEventi
     {
         public string Titolo { get; private set; }
-        private List<string> eventi;
+        public static List<Evento> eventi;
 
         public ProgrammaEventi(string titolo)
         {
             Titolo = titolo;
-            eventi = new List<string>();
+            eventi = new List<Evento>();
         }
 
-        public void AggiungiEvento(string titoloEvento)
+        public void AggiungiEvento(Evento evento)
         {
-            eventi.Add(titoloEvento);
+            eventi.Add(evento);
         }
 
 
        
 
-        public static string StampaEventi(List<string> listaEventi)
+        public static string StampaEventi(List<Evento> listaEventi)
         {
             if (listaEventi.Count == 0)
                 return "Nessun evento presente.";
@@ -33,7 +33,7 @@ namespace GestoreEventi
             string result = "";
             foreach (var evento in listaEventi)
             {
-                Console.WriteLine(evento);
+                result += evento.ToString() + "\n";
             }
             return result;
         }
